@@ -72,8 +72,11 @@ extern "C" {
 #endif
 
 
-SQLITE_EXTENSION_INIT1
-
+#if !defined(BUILD_MONOLITHIC)
+	SQLITE_EXTENSION_INIT1
+#else
+	SQLITE_EXTENSION_INIT3
+#endif
 
 
 sqlite3 *thisdb = NULL;
